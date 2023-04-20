@@ -1,22 +1,25 @@
-import {StatusBar} from "expo-status-bar";
 import {StyleSheet, Text, View} from "react-native";
+import React from "react";
 
-import TextInput from "./components/TextInput";
-
-export default function App() {
+const NoMedicinesSelected = () => {
   return (
     <View style={styles.container}>
-      <TextInput />
-      <StatusBar style="auto" />
+      <Text style={styles.text}>No Medicines Selected</Text>
     </View>
   );
-}
+};
+
+export default NoMedicinesSelected;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  text: {
+    color: "red",
+    fontSize: 17,
+    fontWeight: "bold",
   },
 });
