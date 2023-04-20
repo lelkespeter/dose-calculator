@@ -21,7 +21,7 @@ export const LMCategory = [
   },
   {
     catId: "c6",
-    catName: "Postoperativ Analgesi",
+    catName: "Postop Analgesi",
   },
   {
     catId: "c7",

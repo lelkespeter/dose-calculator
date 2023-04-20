@@ -1,6 +1,8 @@
 import {Pressable, StyleSheet, Text, View, Platform} from "react-native";
 import React from "react";
 
+import {GlobalStyles} from "../constants/appColors";
+
 const CategoryItem = ({catName, onPress}) => {
   return (
     <>
@@ -49,10 +51,11 @@ const styles = StyleSheet.create({
     padding: 16,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "green",
+    backgroundColor: GlobalStyles.colors.lightergreen,
   },
   nameText: {
     fontWeight: "bold",
-    fontSize: 17,
+    fontSize: 15,
+    color: "white",
   },
 });

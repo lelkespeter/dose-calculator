@@ -8,6 +8,7 @@ export const GlobalStyles = {
     lightgray: `#d3d3d3`,
     darkgray: `#a9a9a9`,
     green: `#075407`,
+    lightergreen: `#06b606`,
     lightgreen: `#c3edc3`,
     dimgray: `#696969`,
     vit: "#f9f7f7",

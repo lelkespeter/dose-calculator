@@ -15,6 +15,7 @@ const MedicinesCategoriesScreen = () => {
         data={LMCategory}
         keyExtractor={(item) => item.catId}
         renderItem={kategoriRender}
+        numColumns={2}
       />
     </View>
   );
