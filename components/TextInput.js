@@ -4,7 +4,7 @@ import React from "react";
 const TextInput = () => {
   return (
     <View>
-      <Text>TextInput</Text>
+      <Text>Text Input:</Text>
     </View>
   );
 };
