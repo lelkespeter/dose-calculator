@@ -4,11 +4,18 @@ import React from "react";
 import {LMCategory} from "../constants/kategorier";
 import CategoryItem from "../components/CategoryItem";
 
-function kategoriRender(itemData) {
-  return <CategoryItem catName={itemData.item.catName} />;
-}
+const MedicinesCategoriesScreen = ({navigation}) => {
+  function kategoriRender(itemData) {
+    function pressHandler() {
+      navigation.navigate("Drugs", {
+        catId: itemData.item.catId,
+      });
+    }
+    return (
+      <CategoryItem catName={itemData.item.catName} onPress={pressHandler} />
+    );
+  }
 
-const MedicinesCategoriesScreen = () => {
   return (
     <View>
       <FlatList

@@ -21,22 +21,6 @@ const DrugItem = ({drugName, styrka, id}) => {
     });
   }
 
-  // return (
-  // <>
-  //   <View style={styles.outerContainer}>
-  //     <Pressable
-  //       android_ripple={{color: "#ccc"}}
-  //       style={({pressed}) => (pressed ? styles.buttonPressed : null)}
-  //       onPress={() => handleDrugClick(drug.drugId)}
-  //     >
-  //       <View style={styles.innerContainer}>
-  //         <Text style={styles.text}>
-  //           {drugName} {styrka}
-  //         </Text>
-  //       </View>
-  //     </Pressable>
-  //   </View>
-  // </>
   return (
     <View>
       {DRUGS.map((drug) => (

@@ -4,6 +4,7 @@ import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 
 import MedicinesCategoriesScreen from "./screens/MedicinesCategoriesScreen";
+import MedicinesInCategory from "./screens/MedicinesInCategory";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ export default function App() {
             name="Kategorier"
             component={MedicinesCategoriesScreen}
           />
+          <Stack.Screen name="Drugs" component={MedicinesInCategory} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
