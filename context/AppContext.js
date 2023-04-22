@@ -3,34 +3,15 @@ import {DRUGS} from "../constants/data";
 export const AppContext = createContext();
 
 const AppContextProvider = ({children}) => {
-  const [weight, setWeight] = useState("");
-  const [pressed, setPressed] = useState(false);
-  const [isValid, setIsValid] = useState(true);
-  const [selected, setSelected] = useState([]);
-
-  // const onAddSelected = (drugId) => {
-  //   const drug = DRUGS.find((lm) => lm.drugId === drugId);
-  //   setSelected((prevSelected) => [...prevSelected, drug]);
-  //   console.log(drug);
-  // };
-
-  console.log("DRUGS:", DRUGS);
-
-  const handleDrugClick = (drugId) => {
-    const drug = DRUGS.find((lm) => lm.drugId === drugId);
-    setSelected((prevSelected) => [...prevSelected, drug]);
-  };
+  const [bodyWeight, setBodyWeight] = useState("");
 
   const weightInputHandler = (enteredText) => {
-    setWeight(enteredText);
+    setBodyWeight(enteredText);
   };
 
   const value = {
-    weight,
+    bodyWeight,
     weightInputHandler,
-    selected,
-
-    handleDrugClick,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

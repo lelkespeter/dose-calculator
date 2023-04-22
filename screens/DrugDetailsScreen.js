@@ -15,7 +15,7 @@ const DrugDetailsScreen = ({route}) => {
 
   return (
     <View style={{marginVertical: 44}}>
-      <LmDetaljer {...selectedProps} />
+      <LmDetaljer {...selectedProps} selectedDrug={selectedDrug} />
     </View>
   );
 };

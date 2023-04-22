@@ -1,18 +1,18 @@
 import {StyleSheet, Text, View} from "react-native";
 import React from "react";
 
-const QuantityToGive = (seledtedDrugs) => {
+const QuantityToGive = (selectedDrug) => {
   const w = 44;
-  const strength = seledtedDrugs.styrka.charAt(seledtedDrugs.styrka.length - 5);
-  const numStrength = parseFloat(seledtedDrugs.styrka);
+  const strength = selectedDrug.styrka.charAt(selectedDrug.styrka.length - 5);
+  const numStrength = parseFloat(selectedDrug.styrka);
 
   const c1 = strength === "m";
-  const c2 = seledtedDrugs.dosiMg;
-  const c3 = seledtedDrugs.dosiMg_2;
-  const c4 = seledtedDrugs.dosIµG;
-  const c5 = seledtedDrugs.dosIµG_2;
-  const c6 = seledtedDrugs.dosIµG_3;
-  const c7 = seledtedDrugs.styrka;
+  const c2 = selectedDrug.dosiMg;
+  const c3 = selectedDrug.dosiMg_2;
+  const c4 = selectedDrug.dosIµG;
+  const c5 = selectedDrug.dosIµG_2;
+  const c6 = selectedDrug.dosIµG_3;
+  const c7 = selectedDrug.styrka;
 
   let dos;
 
