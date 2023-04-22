@@ -1,33 +1,47 @@
-import {FlatList, StyleSheet, Text, View} from "react-native";
-import React, {useLayoutEffect} from "react";
+import {FlatList, StyleSheet, Pressable, Text, View} from "react-native";
+import React, {useContext, useEffect, useLayoutEffect} from "react";
 
 import {DRUGS} from "../constants/data";
 import {LMCategory} from "../constants/kategorier";
 import LMItem from "../components/LMItem";
 import {getDrugItemProps} from "../constants/DrugItemProps";
+import {AppContext} from "../context/AppContext";
 
 const MedicinesInCategory = ({route, navigation}) => {
-  const katId = route.params.catId;
+  const catId = route.params.catId;
+  const {selectedDrugs, setSelectedDrugs} = useContext(AppContext);
 
   const displayedDrugs = DRUGS.filter((drug) => {
-    return drug.catId.includes(katId);
+    return drug.catId.includes(catId);
   });
   const sortedDrugs = displayedDrugs.sort((a, b) =>
     a.drugName.localeCompare(b.drugName)
   );
 
+  console.log("selectedDrugs before:", selectedDrugs);
+  useEffect(() => {
+    console.log("selectedDrugs", selectedDrugs);
+  }, [selectedDrugs]);
+
   useLayoutEffect(() => {
-    const katTitel = LMCategory.find((kat) => kat.catId === katId).catName;
+    const catTitle = LMCategory.find((cat) => cat.catId === catId).catName;
 
     navigation.setOptions({
-      title: katTitel,
+      title: catTitle,
     });
-  }, [katId, navigation]);
+  }, [catId, navigation]);
 
   function renderDrugs(itemData) {
     const item = itemData.item;
     const drugItemProps = getDrugItemProps(item);
-    return <LMItem {...drugItemProps} />;
+    return (
+      <LMItem
+        {...drugItemProps}
+        onPress={() => {
+          setSelectedDrugs((prevSelectedDrugs) => [...prevSelectedDrugs, item]);
+        }}
+      />
+    );
   }
 
   return (
@@ -37,6 +51,15 @@ const MedicinesInCategory = ({route, navigation}) => {
         keyExtractor={(item) => item.drugId}
         renderItem={renderDrugs}
       />
+      <Pressable
+        onPress={() =>
+          navigation.navigate("List", {
+            selectedDrugs: selectedDrugs,
+          })
+        }
+      >
+        <Text>Selected Drugs</Text>
+      </Pressable>
     </View>
   );
 };
