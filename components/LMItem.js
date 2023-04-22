@@ -1,14 +1,23 @@
 import {Pressable, StyleSheet, Text, View} from "react-native";
 import React from "react";
+import {useNavigation} from "@react-navigation/native";
 
-const LMItem = ({drugName, styrka}) => {
+const LMItem = ({drugName, styrka, drugId}) => {
+  const navigation = useNavigation();
+
+  function selectLmHandler() {
+    navigation.navigate("List", {
+      lmId: drugId,
+    });
+  }
+
   return (
     <>
       <View style={styles.outerContainer}>
         <Pressable
           android_ripple={{color: "#ccc"}}
           style={({pressed}) => (pressed ? styles.buttonPressed : null)}
-          onPress={() => handleDrugClick(drug.drugId)}
+          onPress={selectLmHandler}
         >
           <View style={styles.innerContainer}>
             <Text style={styles.text}>{`${drugName} ${styrka}`}</Text>

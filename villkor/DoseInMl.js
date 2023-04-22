@@ -1,19 +1,19 @@
-const DoseInMl = (seledtedDrugs) => {
+const DoseInMl = (selectedDrug) => {
   const w = 44;
-  const strength = seledtedDrugs.styrka.charAt(seledtedDrugs.styrka.length - 5);
-  const numStrength = parseFloat(seledtedDrugs.styrka);
+  const strength = selectedDrug.styrka.charAt(selectedDrug.styrka.length - 5);
+  const numStrength = parseFloat(selectedDrug.styrka);
 
   const c1 = strength === "m";
-  const c2 = seledtedDrugs.dosiMg;
+  const c2 = selectedDrug.dosiMg;
   const c3 = (c2 * w) / numStrength;
-  const c4 = seledtedDrugs.drugName === "Betapred";
-  const c5 = seledtedDrugs.drugName === "Ondansetron";
-  const c6 = seledtedDrugs.drugName === "Phenergan";
-  const c7 = seledtedDrugs.dosIµG;
-  const c8 = seledtedDrugs.dosIµG_2;
+  const c4 = selectedDrug.drugName === "Betapred";
+  const c5 = selectedDrug.drugName === "Ondansetron";
+  const c6 = selectedDrug.drugName === "Phenergan";
+  const c7 = selectedDrug.dosIµG;
+  const c8 = selectedDrug.dosIµG_2;
   const c9 = (c7 * w) / numStrength / 1000;
   const c99 = (c8 * w) / numStrength / 1000;
-  const c10 = seledtedDrugs.drugName === "Atropin";
+  const c10 = selectedDrug.drugName === "Atropin";
   const c11 = (c8 * w) / numStrength;
   const c12 = (c7 * w) / numStrength;
 
