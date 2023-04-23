@@ -4,18 +4,18 @@ import React, {useContext} from "react";
 import {AppContext} from "../context/AppContext";
 
 const WeightInput = () => {
-  const {bodyWeight, weightInputHandler} = useContext(AppContext);
+  const {weight, weightInputHandler} = useContext(AppContext);
   return (
     <>
       <TextInput
         style={styles.input}
         onChangeText={weightInputHandler}
-        value={bodyWeight}
+        value={weight}
         placeholder="vikt i Kg"
         keyboardType="decimal-pad"
       />
       <View style={{marginVertical: 7}}>
-        <Text style={{color: "white"}}>{bodyWeight}</Text>
+        <Text style={{color: "white"}}>{weight}</Text>
       </View>
     </>
   );

@@ -3,7 +3,6 @@ import React from "react";
 
 import {LMCategory} from "../constants/kategorier";
 import CategoryItem from "../components/CategoryItem";
-import WeightInput from "../components/WeightInput";
 
 const MedicinesCategoriesScreen = ({navigation}) => {
   function kategoriRender(itemData) {
@@ -18,19 +17,14 @@ const MedicinesCategoriesScreen = ({navigation}) => {
   }
 
   return (
-    <>
-      <View>
-        <FlatList
-          data={LMCategory}
-          keyExtractor={(item) => item.catId}
-          renderItem={kategoriRender}
-          numColumns={2}
-        />
-      </View>
-      <View>
-        <WeightInput />
-      </View>
-    </>
+    <View>
+      <FlatList
+        data={LMCategory}
+        keyExtractor={(item) => item.catId}
+        renderItem={kategoriRender}
+        numColumns={2}
+      />
+    </View>
   );
 };
 

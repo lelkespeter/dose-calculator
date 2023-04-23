@@ -1,26 +1,15 @@
 import {Pressable, StyleSheet, Text, View} from "react-native";
-import React, {useContext, useEffect} from "react";
-import {useNavigation, useRoute} from "@react-navigation/native";
-import {AppContext} from "../context/AppContext";
-import {DRUGS} from "../constants/data";
+import React from "react";
+import {useNavigation} from "@react-navigation/native";
 
 const LMItem = ({drugName, styrka, drugId}) => {
   const navigation = useNavigation();
-  const route = useRoute();
-  const {selectedDrugs, setSelectedDrugs} = useContext(AppContext);
-  const katId = route.params.catId;
 
-  const selectedDrug = DRUGS.filter((drug) => {
-    return drug.catId.includes(katId);
-  });
-
-  function pressHandler() {
-    setSelectedDrugs([...selectedDrugs, selectedDrug]);
+  function selectLmHandler() {
+    navigation.navigate("List", {
+      lmId: drugId,
+    });
   }
-
-  useEffect(() => {
-    console.log(selectedDrugs);
-  }, [selectedDrugs]);
 
   return (
     <>
@@ -28,7 +17,7 @@ const LMItem = ({drugName, styrka, drugId}) => {
         <Pressable
           android_ripple={{color: "#ccc"}}
           style={({pressed}) => (pressed ? styles.buttonPressed : null)}
-          onPress={pressHandler}
+          onPress={selectLmHandler}
         >
           <View style={styles.innerContainer}>
             <Text style={styles.text}>{`${drugName} ${styrka}`}</Text>

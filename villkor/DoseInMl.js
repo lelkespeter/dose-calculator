@@ -1,9 +1,5 @@
-import {useContext} from "react";
-import {AppContext} from "../context/AppContext";
-
 const DoseInMl = (selectedDrug) => {
-  const {bodyWeight} = useContext(AppContext);
-  const w = +bodyWeight;
+  const w = 44;
   const strength = selectedDrug.styrka.charAt(selectedDrug.styrka.length - 5);
   const numStrength = parseFloat(selectedDrug.styrka);
 
