@@ -1,10 +1,13 @@
 import {Pressable, StyleSheet, Text, View, Platform} from "react-native";
-import React from "react";
+import React, {useContext} from "react";
 
 import {GlobalStyles} from "../constants/appColors";
+import {AppContext} from "../context/AppContext";
+import PleaseEnterWeight from "./PleaseEnterWeight";
 
 const CategoryItem = ({catName, onPress}) => {
-  return (
+  const {bodyWeight} = useContext(AppContext);
+  return bodyWeight ? (
     <>
       <View style={styles.outerContainer}>
         <Pressable
@@ -13,7 +16,7 @@ const CategoryItem = ({catName, onPress}) => {
             styles.btn,
             pressed ? styles.btnPressed : null,
           ]}
-          onPress={onPress}
+          onPress={() => onPress()}
         >
           <View style={styles.innerContainer}>
             <Text style={styles.nameText}>{catName}</Text>
@@ -21,6 +24,8 @@ const CategoryItem = ({catName, onPress}) => {
         </Pressable>
       </View>
     </>
+  ) : (
+    <PleaseEnterWeight />
   );
 };
 

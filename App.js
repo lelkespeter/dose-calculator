@@ -6,6 +6,7 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import MedicinesCategoriesScreen from "./screens/MedicinesCategoriesScreen";
 import MedicinesInCategory from "./screens/MedicinesInCategory";
 import DrugDetailsScreen from "./screens/DrugDetailsScreen";
+import AppContextProvider from "./context/AppContext";
 
 const Stack = createNativeStackNavigator();
 
@@ -13,29 +14,31 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: {backgroundColor: "#022206"},
-            headerTintColor: "#cccccc",
-            contentStyle: {backgroundColor: "#04430c"},
-          }}
-        >
-          <Stack.Screen
-            name="Kategorier"
-            component={MedicinesCategoriesScreen}
-            options={{
-              title: "Läkemedels Kategorier",
+      <AppContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerStyle: {backgroundColor: "#022206"},
+              headerTintColor: "#cccccc",
+              contentStyle: {backgroundColor: "#04430c"},
             }}
-          />
-          <Stack.Screen name="Drugs" component={MedicinesInCategory} />
-          <Stack.Screen
-            name="List"
-            component={DrugDetailsScreen}
-            options={{title: "Mediciner och Doser"}}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+          >
+            <Stack.Screen
+              name="Kategorier"
+              component={MedicinesCategoriesScreen}
+              options={{
+                title: "Läkemedels Kategorier",
+              }}
+            />
+            <Stack.Screen name="Drugs" component={MedicinesInCategory} />
+            <Stack.Screen
+              name="List"
+              component={DrugDetailsScreen}
+              options={{title: "Mediciner och Doser"}}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </AppContextProvider>
     </>
   );
 }

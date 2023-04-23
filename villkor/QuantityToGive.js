@@ -1,8 +1,10 @@
 import {StyleSheet, Text, View} from "react-native";
-import React from "react";
+import React, {useContext} from "react";
+import {AppContext} from "../context/AppContext";
 
 const QuantityToGive = (selectedDrug) => {
-  const w = 44;
+  const {bodyWeight} = useContext(AppContext);
+  const w = +bodyWeight;
   const strength = selectedDrug.styrka.charAt(selectedDrug.styrka.length - 5);
   const numStrength = parseFloat(selectedDrug.styrka);
 
