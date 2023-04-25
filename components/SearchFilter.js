@@ -1,23 +1,29 @@
 import {StyleSheet, Text, View, TextInput} from "react-native";
-import React from "react";
+import React, {useContext} from "react";
+import {AppContext} from "../context/AppContext";
 
 const SearchFilter = () => {
+  const {searchQuery, bodyWeight, searchHandler} = useContext(AppContext);
+
   return (
     <>
       <View>
         <View style={{marginVertical: 9, paddingLeft: 21}}>
           <Text style={{color: "white"}}>Välj läkemedel</Text>
         </View>
-        <View>
+        <View style={{marginBottom: 17}}>
           <TextInput
             style={styles.input}
-            onChangeText={() => {}}
-            //   value={}
+            onChangeText={searchHandler}
+            value={searchQuery}
             placeholder="Vilket läkemedel?"
             placeholderTextColor="#02200e"
             autoCapitalize="words"
             autoCorrect={false}
           />
+        </View>
+        <View>
+          <Text style={{color: "red"}}>{searchQuery}</Text>
         </View>
       </View>
     </>

@@ -7,7 +7,7 @@ import PleaseEnterWeight from "./PleaseEnterWeight";
 
 const CategoryItem = ({catName, onPress}) => {
   const {bodyWeight} = useContext(AppContext);
-  return bodyWeight ? (
+  return (
     <>
       <View style={styles.outerContainer}>
         <Pressable
@@ -24,8 +24,6 @@ const CategoryItem = ({catName, onPress}) => {
         </Pressable>
       </View>
     </>
-  ) : (
-    <PleaseEnterWeight />
   );
 };
 

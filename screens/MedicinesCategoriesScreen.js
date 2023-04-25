@@ -21,19 +21,10 @@ const MedicinesCategoriesScreen = ({navigation}) => {
     );
   }
 
-  if (!bodyWeight) {
-    return <PleaseEnterWeight />;
-  }
-
   return (
     <>
-      <View style={styles.viktC}>
-        <View>
-          <Text style={{color: "white"}}>Vikt:</Text>
-        </View>
-        <View style={{marginHorizontal: 17, width: 141}}>
-          <WeightInput />
-        </View>
+      <View>
+        <WeightInput />
       </View>
 
       <View>
