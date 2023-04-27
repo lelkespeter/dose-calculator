@@ -11,6 +11,7 @@ import React, {useContext} from "react";
 import {AppContext} from "../context/AppContext";
 
 import {DRUGS} from "../constants/data";
+import LMItem from "./LMItem";
 
 const SearchFilter = () => {
   const {searchQuery, bodyWeight, setSearchQuery, searchHandler} =
@@ -18,7 +19,10 @@ const SearchFilter = () => {
 
   function resultHandler() {
     if (!searchQuery) {
-      Alert.alert("Search?", "Please enter a query");
+      // Alert.alert("Search?", "Please enter a query");
+      return null;
+    } else if (!bodyWeight) {
+      Alert.alert("Vikten måste anges!");
       return null;
     }
 
@@ -27,10 +31,16 @@ const SearchFilter = () => {
     );
 
     if (matches.length === 0) {
-      return <Text>No results found.</Text>;
+      return <Text style={styles.text}>No results found.</Text>;
     }
 
-    const renderItem = ({item}) => <Text>{item.drugName}</Text>;
+    const renderItem = ({item}) => (
+      <LMItem
+        drugName={item.drugName}
+        styrka={item.styrka}
+        drugId={item.drugId}
+      />
+    );
 
     return (
       <FlatList
@@ -49,7 +59,7 @@ const SearchFilter = () => {
     <>
       <View>
         <View style={{marginVertical: 9, paddingLeft: 21}}>
-          <Text style={{color: "white"}}>Välj läkemedel</Text>
+          <Text style={styles.text}>1) Sök ett Läkemedel</Text>
         </View>
         <View style={{marginBottom: 17}}>
           <TextInput
@@ -62,12 +72,7 @@ const SearchFilter = () => {
             autoCorrect={false}
           />
         </View>
-        <View>
-          <Text style={{color: "red"}}>{searchQuery}</Text>
-        </View>
-        <View>
-          <Button color="white" title="Submit" onPress={submitHandler} />
-        </View>
+
         <View>{resultHandler()}</View>
       </View>
     </>
@@ -86,6 +91,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#bdeacf",
     padding: 10,
     color: "green",
+    fontSize: 17,
+    fontWeight: "bold",
+  },
+  text: {
+    color: "#faf6f6",
     fontSize: 17,
     fontWeight: "bold",
   },

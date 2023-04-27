@@ -5,13 +5,20 @@ import {
   Text,
   TouchableWithoutFeedback,
   View,
+  Alert,
 } from "react-native";
-import React from "react";
+import React, {useContext} from "react";
 import WeightInput from "../components/WeightInput";
 import SearchFilter from "../components/SearchFilter";
+import {AppContext} from "../context/AppContext";
 
 const StartScreen = ({navigation}) => {
+  const {searchQuery, bodyWeight} = useContext(AppContext);
   function goToHandler() {
+    if (!bodyWeight) {
+      Alert.alert("Vikten måste anges!");
+      return null;
+    }
     navigation.navigate("Kategorier");
   }
   return (
@@ -22,10 +29,26 @@ const StartScreen = ({navigation}) => {
     >
       <View>
         <WeightInput />
+        <View>
+          <Text
+            style={{
+              textAlign: "center",
+              color: "white",
+              fontSize: 19,
+              fontWeight: "bold",
+            }}
+          >
+            Vad vill du göra?
+          </Text>
+        </View>
         <SearchFilter />
-        <Pressable style={{padding: 17}} onPress={goToHandler}>
-          <Text style={{color: "white"}}>Or, view Categories</Text>
-        </Pressable>
+        {searchQuery ? null : (
+          <Pressable style={{padding: 17}} onPress={goToHandler}>
+            <Text style={{color: "white", fontSize: 17, fontWeight: "bold"}}>
+              2) Eller gå till Kategorierna
+            </Text>
+          </Pressable>
+        )}
       </View>
     </TouchableWithoutFeedback>
   );
