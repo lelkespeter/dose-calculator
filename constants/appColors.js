@@ -14,5 +14,6 @@ export const GlobalStyles = {
     vit: "#f9f7f7",
     silver: `#c0c0c0`,
     black: "#000000",
+    inputBackgroundColor: "#bdeacf",
   },
 };

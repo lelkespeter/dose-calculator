@@ -7,7 +7,7 @@ import {
   Alert,
   Button,
 } from "react-native";
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {AppContext} from "../context/AppContext";
 
 import {DRUGS} from "../constants/data";
@@ -19,40 +19,83 @@ const SearchFilter = () => {
 
   function resultHandler() {
     if (!searchQuery) {
-      // Alert.alert("Search?", "Please enter a query");
       return null;
     } else if (!bodyWeight) {
-      Alert.alert("Vikten måste anges!");
+      Alert.alert("Vikten måste skrivas in!");
       return null;
     }
 
-    const matches = DRUGS.filter((drug) =>
-      drug.drugName.toLowerCase().includes(searchQuery.toLowerCase())
+    const firstLetterMatches = DRUGS.filter(
+      (drug) =>
+        drug.drugName.charAt(0).toLowerCase() === searchQuery.toLowerCase()
     );
 
-    if (matches.length === 0) {
-      return <Text style={styles.text}>No results found.</Text>;
+    if (firstLetterMatches.length > 0) {
+      const exactMatches = firstLetterMatches.filter(
+        (drug) => drug.drugName.toLowerCase() === searchQuery.toLowerCase()
+      );
+      if (exactMatches.length > 0) {
+        // Render exact matches
+        const renderItem = ({item}) => (
+          <>
+            <LMItem
+              drugName={item.drugName}
+              styrka={item.styrka}
+              drugId={item.drugId}
+            />
+          </>
+        );
+        return (
+          <FlatList
+            data={exactMatches}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.drugId}
+          />
+        );
+      } else {
+        // Render first letter matches
+        const renderItem = ({item}) => (
+          <>
+            <LMItem
+              drugName={item.drugName}
+              styrka={item.styrka}
+              drugId={item.drugId}
+            />
+          </>
+        );
+        return (
+          <FlatList
+            data={firstLetterMatches}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.drugId}
+          />
+        );
+      }
+    } else {
+      // Render matches with searchQuery in drugName
+      const matches = DRUGS.filter((drug) =>
+        drug.drugName.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      if (matches.length === 0) {
+        return <Text style={styles.text}>No results found.</Text>;
+      }
+      const renderItem = ({item}) => (
+        <>
+          <LMItem
+            drugName={item.drugName}
+            styrka={item.styrka}
+            drugId={item.drugId}
+          />
+        </>
+      );
+      return (
+        <FlatList
+          data={matches}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.drugId}
+        />
+      );
     }
-
-    const renderItem = ({item}) => (
-      <LMItem
-        drugName={item.drugName}
-        styrka={item.styrka}
-        drugId={item.drugId}
-      />
-    );
-
-    return (
-      <FlatList
-        data={matches}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.drugId}
-      />
-    );
-  }
-
-  function submitHandler() {
-    setSearchQuery(searchQuery);
   }
 
   return (

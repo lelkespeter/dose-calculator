@@ -9,7 +9,8 @@ const AppContextProvider = ({children}) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const weightInputHandler = (enteredText) => {
-    setBodyWeight(enteredText);
+    const komma = enteredText.replace(",", ".");
+    setBodyWeight(komma);
   };
   const searchHandler = (enteredText) => {
     setSearchQuery(enteredText);

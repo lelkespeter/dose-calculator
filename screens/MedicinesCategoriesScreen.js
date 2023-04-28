@@ -6,6 +6,7 @@ import CategoryItem from "../components/CategoryItem";
 import WeightInput from "../components/WeightInput";
 import PleaseEnterWeight from "../components/PleaseEnterWeight";
 import {AppContext} from "../context/AppContext";
+import Vikt from "../components/Vikt";
 
 const MedicinesCategoriesScreen = ({navigation}) => {
   const {bodyWeight, show, setShow} = useContext(AppContext);
@@ -23,9 +24,7 @@ const MedicinesCategoriesScreen = ({navigation}) => {
 
   return (
     <>
-      <View>
-        <WeightInput />
-      </View>
+      <Vikt />
 
       <View>
         <FlatList

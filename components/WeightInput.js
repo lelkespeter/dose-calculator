@@ -1,6 +1,7 @@
 import {StyleSheet, Text, TextInput, View} from "react-native";
 import React, {useContext} from "react";
 
+import {GlobalStyles} from "../constants/appColors";
 import {AppContext} from "../context/AppContext";
 
 const WeightInput = () => {
@@ -9,15 +10,13 @@ const WeightInput = () => {
     <>
       <View style={{marginVertical: 21}}>
         <View>
-          <Text style={{color: "white", textAlign: "center"}}>
-            Vikten i kg (format: kg.g):
-          </Text>
+          <Text style={styles.text}>Vikten i kg :</Text>
         </View>
         <TextInput
           style={styles.input}
           onChangeText={weightInputHandler}
           value={bodyWeight}
-          placeholder="Format: kg.g"
+          placeholder="Vikten i kg"
           placeholderTextColor="#02200e"
           keyboardType="decimal-pad"
         />
@@ -41,5 +40,10 @@ const styles = StyleSheet.create({
     color: "green",
     fontSize: 17,
     fontWeight: "bold",
+  },
+  text: {
+    color: GlobalStyles.colors.vit,
+    textAlign: "center",
+    fontSize: 17,
   },
 });

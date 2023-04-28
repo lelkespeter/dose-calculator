@@ -7,10 +7,11 @@ import {
   View,
   Alert,
 } from "react-native";
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import WeightInput from "../components/WeightInput";
 import SearchFilter from "../components/SearchFilter";
 import {AppContext} from "../context/AppContext";
+import Vikt from "../components/Vikt";
 
 const StartScreen = ({navigation}) => {
   const {searchQuery, bodyWeight} = useContext(AppContext);
@@ -21,6 +22,7 @@ const StartScreen = ({navigation}) => {
     }
     navigation.navigate("Kategorier");
   }
+
   return (
     <TouchableWithoutFeedback
       onPress={() => {
@@ -29,6 +31,7 @@ const StartScreen = ({navigation}) => {
     >
       <View>
         <WeightInput />
+
         <View>
           <Text
             style={{
@@ -42,6 +45,7 @@ const StartScreen = ({navigation}) => {
           </Text>
         </View>
         <SearchFilter />
+
         {searchQuery ? null : (
           <Pressable style={{padding: 17}} onPress={goToHandler}>
             <Text style={{color: "white", fontSize: 17, fontWeight: "bold"}}>
