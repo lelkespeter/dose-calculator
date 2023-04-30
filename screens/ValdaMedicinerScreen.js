@@ -1,11 +1,13 @@
 import {StyleSheet, Text, View} from "react-native";
 import React from "react";
 import {GlobalStyles} from "../constants/appColors";
+import SelectedDrugDetails from "../components/SelectedDrugDetails";
 
 const ValdaMedicinerScreen = () => {
   return (
     <View style={styles.c}>
       <Text style={styles.t}>Valda Mediciner Lista</Text>
+      <SelectedDrugDetails />
     </View>
   );
 };
