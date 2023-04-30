@@ -6,7 +6,7 @@ import SelectedDrugDetails from "../components/SelectedDrugDetails";
 const ValdaMedicinerScreen = () => {
   return (
     <View style={styles.c}>
-      <Text style={styles.t}>Lista Valda mediciner</Text>
+      <Text style={styles.t}>Valda mediciner:</Text>
       <SelectedDrugDetails />
     </View>
   );
