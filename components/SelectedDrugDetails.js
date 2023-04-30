@@ -4,7 +4,7 @@ import React from "react";
 const SelectedDrugDetails = () => {
   return (
     <View>
-      <Text style={{color: "white"}}>Selected Drug Details</Text>
+      <Text style={{color: "white"}}>Selected Drug </Text>
     </View>
   );
 };
