@@ -7,10 +7,11 @@ import {
   View,
   Alert,
 } from "react-native";
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useLayoutEffect, useState} from "react";
 import WeightInput from "../components/WeightInput";
 import SearchFilter from "../components/SearchFilter";
 import {AppContext} from "../context/AppContext";
+import IconButton from "../components/IconButton";
 import Vikt from "../components/Vikt";
 
 const StartScreen = ({navigation}) => {
@@ -22,6 +23,18 @@ const StartScreen = ({navigation}) => {
     }
     navigation.navigate("Kategorier");
   }
+
+  function pressHandler() {
+    navigation.navigate("Valda");
+  }
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => {
+        return <IconButton onPress={pressHandler} />;
+      },
+    });
+  }, []);
 
   return (
     <TouchableWithoutFeedback

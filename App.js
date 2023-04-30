@@ -8,6 +8,7 @@ import MedicinesInCategory from "./screens/MedicinesInCategory";
 import DrugDetailsScreen from "./screens/DrugDetailsScreen";
 import AppContextProvider from "./context/AppContext";
 import StartScreen from "./screens/StartScreen";
+import ValdaMedicinerScreen from "./screens/ValdaMedicinerScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +26,7 @@ export default function App() {
             }}
           >
             <Stack.Screen name="Start" component={StartScreen} />
+            <Stack.Screen name="Valda" component={ValdaMedicinerScreen} />
             <Stack.Screen
               name="Kategorier"
               component={MedicinesCategoriesScreen}
