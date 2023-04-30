@@ -8,6 +8,7 @@ import MedicinesInCategory from "./screens/MedicinesInCategory";
 import DrugDetailsScreen from "./screens/DrugDetailsScreen";
 import AppContextProvider from "./context/AppContext";
 import StartScreen from "./screens/StartScreen";
+import SelectedMedicinesScreen from "./screens/SelectedMedicinesScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -33,10 +34,15 @@ export default function App() {
               }}
             />
             <Stack.Screen name="Drugs" component={MedicinesInCategory} />
-            <Stack.Screen
+            {/* <Stack.Screen
               name="List"
               component={DrugDetailsScreen}
               options={{title: "Mediciner och Doser"}}
+            /> */}
+            <Stack.Screen
+              name="Selected"
+              component={SelectedMedicinesScreen}
+              options={{title: "Selected Medicines"}}
             />
           </Stack.Navigator>
         </NavigationContainer>

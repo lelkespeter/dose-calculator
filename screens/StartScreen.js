@@ -6,12 +6,13 @@ import {
   TouchableWithoutFeedback,
   View,
   Alert,
+  Button,
 } from "react-native";
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useLayoutEffect, useState} from "react";
 import WeightInput from "../components/WeightInput";
 import SearchFilter from "../components/SearchFilter";
 import {AppContext} from "../context/AppContext";
-import Vikt from "../components/Vikt";
+import IconButton from "../components/IconButton";
 
 const StartScreen = ({navigation}) => {
   const {searchQuery, bodyWeight} = useContext(AppContext);
@@ -22,6 +23,18 @@ const StartScreen = ({navigation}) => {
     }
     navigation.navigate("Kategorier");
   }
+
+  function pressHandler() {
+    navigation.navigate("Selected");
+  }
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => {
+        return <IconButton onPress={pressHandler} />;
+      },
+    });
+  }, [navigation, pressHandler]);
 
   return (
     <TouchableWithoutFeedback
