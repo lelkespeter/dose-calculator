@@ -6,13 +6,13 @@ import {
   TouchableWithoutFeedback,
   View,
   Alert,
-  Button,
 } from "react-native";
 import React, {useContext, useEffect, useLayoutEffect, useState} from "react";
 import WeightInput from "../components/WeightInput";
 import SearchFilter from "../components/SearchFilter";
 import {AppContext} from "../context/AppContext";
 import IconButton from "../components/IconButton";
+import Vikt from "../components/Vikt";
 
 const StartScreen = ({navigation}) => {
   const {searchQuery, bodyWeight} = useContext(AppContext);
@@ -25,7 +25,7 @@ const StartScreen = ({navigation}) => {
   }
 
   function pressHandler() {
-    navigation.navigate("Selected");
+    navigation.navigate("Valda");
   }
 
   useLayoutEffect(() => {
@@ -34,7 +34,7 @@ const StartScreen = ({navigation}) => {
         return <IconButton onPress={pressHandler} />;
       },
     });
-  }, [navigation, pressHandler]);
+  }, []);
 
   return (
     <TouchableWithoutFeedback

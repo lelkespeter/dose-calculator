@@ -22,8 +22,9 @@ const MedicinesCategoriesScreen = ({navigation}) => {
       <CategoryItem catName={itemData.item.catName} onPress={pressHandler} />
     );
   }
+
   function pressHandler() {
-    navigation.navigate("Selected");
+    navigation.navigate("Valda");
   }
 
   useLayoutEffect(() => {

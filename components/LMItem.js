@@ -1,15 +1,15 @@
 import {Pressable, StyleSheet, Text, View} from "react-native";
-import React, {useContext} from "react";
+import React from "react";
 import {useNavigation} from "@react-navigation/native";
-import {AppContext} from "../context/AppContext";
 
 const LMItem = ({drugName, styrka, drugId}) => {
-  const {selectedDrugs, setSelectedDrugs} = useContext(AppContext);
+  const navigation = useNavigation();
 
-  const addSelectedDrug = (selectedDrug) => {
-    setSelectedDrugs([...selectedDrugs, selectedDrug]);
-    console.log(selectedDrugs);
-  };
+  function selectLmHandler() {
+    navigation.navigate("List", {
+      lmId: drugId,
+    });
+  }
 
   return (
     <>
@@ -17,7 +17,7 @@ const LMItem = ({drugName, styrka, drugId}) => {
         <Pressable
           android_ripple={{color: "#ccc"}}
           style={({pressed}) => (pressed ? styles.buttonPressed : null)}
-          onPress={() => addSelectedDrug(selectedDrug)}
+          onPress={selectLmHandler}
         >
           <View style={styles.innerContainer}>
             <Text style={styles.text}>{`${drugName} ${styrka}`}</Text>

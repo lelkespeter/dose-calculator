@@ -7,13 +7,6 @@ const AppContextProvider = ({children}) => {
   const [bodyWeight, setBodyWeight] = useState("");
   const [show, setShow] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedDrugs, setSelectedDrugs] = useState([]);
-
-  const addSelectedDrug = (drugId) => {
-    const selectedDrug = DRUGS.find((drug) => drug.drugId === drugId);
-    setSelectedDrugs([...selectedDrugs, selectedDrug]);
-    console.log(selectedDrugs);
-  };
 
   const weightInputHandler = (enteredText) => {
     const komma = enteredText.replace(",", ".");
@@ -31,9 +24,6 @@ const AppContextProvider = ({children}) => {
     searchQuery,
     setSearchQuery,
     searchHandler,
-    selectedDrugs,
-    setSelectedDrugs,
-    addSelectedDrug,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
