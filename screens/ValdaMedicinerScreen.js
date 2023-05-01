@@ -1,13 +1,42 @@
-import {StyleSheet, Text, View} from "react-native";
-import React from "react";
+import {FlatList, StyleSheet, Text, View} from "react-native";
+import React, {useContext} from "react";
 import {GlobalStyles} from "../constants/appColors";
-import SelectedDrugDetails from "../components/SelectedDrugDetails";
+import {SelectedDrugProps} from "../constants/SelectedDrugProps";
+
+import {AppContext} from "../context/AppContext";
+import LmDetaljer from "../components/LmDetaljer";
 
 const ValdaMedicinerScreen = () => {
+  const {selectedDrugs} = useContext(AppContext);
+
+  // function renderCards(itemData) {
+  //   const item = itemData.item;
+  //   if (!selectedDrugs || selectedDrugs.length === 0) {
+  //     return null;
+  //   }
+  //   const drugItemProps = SelectedDrugProps(selectedDrugs[0]);
+  //   return <LmDetaljer {...drugItemProps} />;
+  // }
+
+  function renderCards(itemData) {
+    const item = itemData.item;
+    const drugItemProps = SelectedDrugProps(selectedDrugs);
+
+    if (!drugItemProps) {
+      return null;
+    }
+
+    return <LmDetaljer {...drugItemProps} />;
+  }
+
   return (
-    <View style={styles.c}>
+    <View>
       <Text style={styles.t}>Valda mediciner:</Text>
-      <SelectedDrugDetails />
+      <FlatList
+        data={selectedDrugs}
+        keyExtractor={(item) => item.drugId}
+        renderItem={renderCards}
+      />
     </View>
   );
 };

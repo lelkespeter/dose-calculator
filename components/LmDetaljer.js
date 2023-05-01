@@ -3,10 +3,10 @@ import React from "react";
 import DoseInMl from "../villkor/DoseInMl";
 import QuantityToGive from "../villkor/QuantityToGive";
 
-const LmDetaljer = ({drugName, styrka, selectedDrug}) => {
-  const ml = DoseInMl(selectedDrug);
+const LmDetaljer = ({drugName, styrka, selectedDrugs}) => {
+  const ml = DoseInMl(selectedDrugs);
 
-  const dos = QuantityToGive(selectedDrug);
+  const dos = QuantityToGive(selectedDrugs);
 
   return (
     <>
@@ -23,16 +23,16 @@ const LmDetaljer = ({drugName, styrka, selectedDrug}) => {
           <Text style={{color: "white"}}> {ml}</Text>
         </View>
         <View>
-          {selectedDrug.recept ? (
+          {selectedDrugs.recept ? (
             <Text style={{color: "white"}}>
-              Spädning: {selectedDrug.recept}
+              Spädning: {selectedDrugs.recept}
             </Text>
           ) : null}
         </View>
         <View>
-          {selectedDrug.obs ? (
+          {selectedDrugs.obs ? (
             <Text style={{color: "red", fontSize: 16, fontWeight: "bold"}}>
-              OBS: {selectedDrug.obs}
+              OBS: {selectedDrugs.obs}
             </Text>
           ) : null}
         </View>

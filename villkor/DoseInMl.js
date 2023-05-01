@@ -1,23 +1,25 @@
 import {useContext} from "react";
 import {AppContext} from "../context/AppContext";
 
-const DoseInMl = (selectedDrug) => {
+const DoseInMl = (selectedDrugs) => {
   const {bodyWeight} = useContext(AppContext);
   const w = +bodyWeight;
-  const strength = selectedDrug.styrka.charAt(selectedDrug.styrka.length - 5);
-  const numStrength = parseFloat(selectedDrug.styrka);
+  const strength = selectedDrugs?.styrka?.charAt(
+    selectedDrugs.styrka.length - 5
+  );
+  const numStrength = parseFloat(selectedDrugs?.styrka);
 
   const c1 = strength === "m";
-  const c2 = selectedDrug.dosiMg;
+  const c2 = selectedDrugs.dosiMg;
   const c3 = (c2 * w) / numStrength;
-  const c4 = selectedDrug.drugName === "Betapred";
-  const c5 = selectedDrug.drugName === "Ondansetron";
-  const c6 = selectedDrug.drugName === "Phenergan";
-  const c7 = selectedDrug.dosIµG;
-  const c8 = selectedDrug.dosIµG_2;
+  const c4 = selectedDrugs.drugName === "Betapred";
+  const c5 = selectedDrugs.drugName === "Ondansetron";
+  const c6 = selectedDrugs.drugName === "Phenergan";
+  const c7 = selectedDrugs.dosIµG;
+  const c8 = selectedDrugs.dosIµG_2;
   const c9 = (c7 * w) / numStrength / 1000;
   const c99 = (c8 * w) / numStrength / 1000;
-  const c10 = selectedDrug.drugName === "Atropin";
+  const c10 = selectedDrugs.drugName === "Atropin";
   const c11 = (c8 * w) / numStrength;
   const c12 = (c7 * w) / numStrength;
 

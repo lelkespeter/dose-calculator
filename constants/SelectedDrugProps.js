@@ -1,16 +1,20 @@
-export const SelectedDrugProps = (selectedDrug) => {
+export const SelectedDrugProps = (selectedDrugs) => {
+  if (!selectedDrugs) {
+    return null;
+  }
+
   return {
-    drugId: selectedDrug.drugId,
-    catId: selectedDrug.catId,
-    drugName: selectedDrug.drugName,
-    styrka: selectedDrug.styrka,
-    recept: selectedDrug.recept,
-    dosIµG: selectedDrug.dosIµG,
-    obs: selectedDrug.obs,
-    dosiMg: selectedDrug.dosiMg,
-    dosIµG_2: selectedDrug.dosIµG_2,
-    obs_2: selectedDrug.obs_2,
-    dosiMg_2: selectedDrug.dosiMg_2,
-    dosIµG_3: selectedDrug.dosIµG_3,
+    drugId: selectedDrugs.drugId,
+    catId: selectedDrugs.catId,
+    drugName: selectedDrugs.drugName,
+    styrka: selectedDrugs.styrka,
+    recept: selectedDrugs.recept,
+    dosIµG: selectedDrugs.dosIµG,
+    obs: selectedDrugs.obs,
+    dosiMg: selectedDrugs.dosiMg,
+    dosIµG_2: selectedDrugs.dosIµG_2,
+    obs_2: selectedDrugs.obs_2,
+    dosiMg_2: selectedDrugs.dosiMg_2,
+    dosIµG_3: selectedDrugs.dosIµG_3,
   };
 };

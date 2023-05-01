@@ -7,6 +7,7 @@ const AppContextProvider = ({children}) => {
   const [bodyWeight, setBodyWeight] = useState("");
   const [show, setShow] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedDrugs, setSelectedDrugs] = useState([]);
 
   const weightInputHandler = (enteredText) => {
     const komma = enteredText.replace(",", ".");
@@ -24,6 +25,8 @@ const AppContextProvider = ({children}) => {
     searchQuery,
     setSearchQuery,
     searchHandler,
+    selectedDrugs,
+    setSelectedDrugs,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
